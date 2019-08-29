@@ -1,0 +1,733 @@
+﻿<!doctype html>
+<html class="no-js" lang="fa">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+
+    <title>air line</title>
+
+    <!-- general -->
+    <link rel="stylesheet" href="./lib/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!-- <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.rtl.css">
+    <link rel="stylesheet" href="./fonts/font-fa.css" />
+
+    <!-- overright style -->
+    <link rel="stylesheet" href="./css/styles.css?v=0.0.1" />
+
+    <link rel="stylesheet" href="./css/styles.css?v=0.0.1" />
+
+    <!-- js labrary -->
+    <script src="./lib/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <script src="./lib/bootstrap/bootstrap.min.js"></script>
+
+    <script src="./js/vue.js"></script>
+
+    <script src="./lib/persian-datePicker/persian-date.min.js"></script>
+    <script src="./lib/persian-datePicker/persian-datepicker.min.js"></script>
+
+    <link rel="stylesheet" href="./lib/persian-datePicker/persian-datepicker.min.css" />
+
+    <link href="./lib/toaster/toastr.min.css" rel="stylesheet" />
+    <script src="./lib/toaster/toastr.min.js"></script>
+
+
+    <script src="./lib/laddaButton/spin.min.js"></script>
+    <script src="./lib/laddaButton/ladda.min.js"></script>
+
+    <link rel="stylesheet" href="./lib/laddaButton/ladda-themeless.min.css" />
+
+    <script src="./js/validate-bootstrap.jquery.min.js"> </script>
+
+</head>
+
+<body dir="rtl">
+    <div class="menu">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">
+                                <img src="./img/Logo_FA.gif" />
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="./index.html">پرواز داخلی / خارجی</a></li>
+                                <li><a href="./flight.html"> جزییات پرواز </a></li>
+                                <li><a href="./passenger.html"> اطلاعات مسافران </a></li>
+                                <li><a href="./result.html"> رزور بلیط </a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a data-toggle="modal" data-target="#myModal" data-backdrop="static"
+                                        data-keyboard="false" href="#"><span class="glyphicon glyphicon-log-in"></span>
+                                        ثبت نام / ورود</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span
+                                            class="glyphicon glyphicon-headphones"></span> پشتیبانی
+                                        <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">راهنمای خرید</a></li>
+                                        <li><a href="#">تماس با ما</a></li>
+                                        <li><a href="#">قوانین و مقررات</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <h1 class="header__title">شرکت هواپیمایی هیوا پرواز </h1>
+        <div class="header__desc">کامل‌ترین سایت خرید بلیط
+            پروازهای داخلی، پروازهای خارجی </div>
+        <div class="container">
+            <div class="row">
+                <div class="header__tab" id="app">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a v-on:click="changeAir('Inside')" data-toggle="tab" href="#tab1">پرواز
+                                داخلی <i class="fa fa-plane" aria-hidden="true"></i></a></li>
+                        <li><a v-on:click="changeAir('Outside')" data-toggle="tab" href="#tab2">پرواز خارجی <i
+                                    class="fa fa-globe" aria-hidden="true"></i></a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="tab1" class="tab-pane fade in active">
+                            <div class="row margin-bottom-10">
+                                <div class="col-md-12">
+                                    <div class="form-check">
+                                        <label>
+                                            <input v-model="air.type" value="0" type="radio" name="type1"> <span
+                                                class="label-text">یک
+                                                طرفه</span>
+                                        </label>
+                                        <label>
+                                            <input v-model="air.type" value="1" type="radio" name="type1"> <span
+                                                class="label-text">رفت و
+                                                برگشت</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <!-- <i class="fa fa-map-marker" aria-hidden="true"></i> -->
+                                        <i class="fa fa-spin fa-spinner"></i>
+                                        <input type="text" autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مبدا را انتخاب کنید " />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تهران</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اراک</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اهواز
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بندر عباس
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بوشهر
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اصفهان
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تبریز
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <input type="text" autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مقصد را انتخاب کنید " />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تهران</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اراک</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اهواز
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بندر عباس
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بوشهر
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اصفهان
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تبریز
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group">
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <input type="text" autocomplete="off" data-role='date-persian'
+                                            autocomplete="off" class="form-control" placeholder="تاریخ رفت" />
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group">
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <input type="text" autocomplete="off"
+                                            :disabled="air.type == 0 && air.name=='Inside'" data-role='date-persian'
+                                            autocomplete="off" class="form-control" placeholder="تاریخ برگشت" />
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-user-circle-o"></i>
+                                        <input type="text" readonly autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مسافران (۱ بزرگسال)" />
+                                        <div class="dropdown-menu">
+                                            <div class="dropdown-menu__item">
+                                                <span class="dropdown-menu__item__title">بزرگسال</span>
+                                                <div>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-plus"></i></button>
+                                                    <span class="dropdown-menu__item__price">1</span>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <span class="dropdown-menu__item__title">کودک (۲ تا ۱۲ سال)</span>
+                                                <div>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-plus"></i></button>
+                                                    <span class="dropdown-menu__item__price">0</span>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <span class="dropdown-menu__item__title">نوزاد (۰ تا ۲ سال)</span>
+                                                <div>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-plus"></i></button>
+                                                    <span class="dropdown-menu__item__price">0</span>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-success btn-block ladda-button" data-style="zoom-in">
+                                            <span class="ladda-label">
+                                                جستجو <i class="fa fa-search"
+                                                    style="margin-right: 5px;font-size: 10px;"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab2" class="tab-pane fade">
+                            <div class="row margin-bottom-10">
+                                <div class="col-md-12">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="radio" name="radio1" v-model="air.type" value="0" type="radio">
+                                            <span class="label-text">یک
+                                                طرفه</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="radio1" v-model="air.type" value="1" type="radio">
+                                            <span class="label-text">رفت و
+                                                برگشت</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="radio1" v-model="air.type" value="2" type="radio">
+                                            <span class="label-text">چند مسیره</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" v-if="!(air.type==2 && air.name=='Outside')">
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <input type="text" autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مبدا را انتخاب کنید " />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تهران</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اراک</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اهواز
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بندر عباس
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بوشهر
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اصفهان
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تبریز
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <input type="text" autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مقصد را انتخاب کنید " />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تهران</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اراک</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اهواز
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بندر عباس
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بوشهر
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اصفهان
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تبریز
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group">
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <input type="text" autocomplete="off" data-role='date-gregorian'
+                                            autocomplete="off" class="form-control" placeholder="تاریخ رفت" />
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group">
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <input type="text" autocomplete="off"
+                                            :disabled="air.type == 0 && air.name=='Outside'" data-role='date-gregorian'
+                                            autocomplete="off" class="form-control" placeholder="تاریخ برگشت" />
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-user-circle-o"></i>
+                                        <input type="text" readonly autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مسافران (۱ بزرگسال)" />
+                                        <div class="dropdown-menu">
+                                            <div class="dropdown-menu__item">
+                                                <span class="dropdown-menu__item__title">بزرگسال</span>
+                                                <div>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-plus"></i></button>
+                                                    <span class="dropdown-menu__item__price">1</span>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <span class="dropdown-menu__item__title">کودک (۲ تا ۱۲ سال)</span>
+                                                <div>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-plus"></i></button>
+                                                    <span class="dropdown-menu__item__price">0</span>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <span class="dropdown-menu__item__title">نوزاد (۰ تا ۲ سال)</span>
+                                                <div>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-plus"></i></button>
+                                                    <span class="dropdown-menu__item__price">0</span>
+                                                    <button class="btn btn-default dropdown-menu__item__btn "><i
+                                                            class="fa fa-minus"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-success btn-block ladda-button" data-style="zoom-in">
+                                            <span class="ladda-label">
+                                                جستجو <i class="fa fa-search"
+                                                    style="margin-right: 5px;font-size: 10px;"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" v-if="(air.type==2 && air.name=='Outside')">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <input type="text" autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مبدا را انتخاب کنید " />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تهران</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اراک</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اهواز
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بندر عباس
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بوشهر
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اصفهان
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تبریز
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <input type="text" autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مقصد را انتخاب کنید " />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تهران</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اراک</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اهواز
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بندر عباس
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بوشهر
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اصفهان
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تبریز
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <input type="text" autocomplete="off" data-role='date-gregorian'
+                                            autocomplete="off" class="form-control" placeholder="تاریخ رفت" />
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <input type="text" autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مبدا را انتخاب کنید " />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تهران</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اراک</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اهواز
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بندر عباس
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بوشهر
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اصفهان
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تبریز
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group dropdown">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        <input type="text" autocomplete="off" data-toggle="dropdown"
+                                            class="form-control dropdown-toggle" placeholder="مقصد را انتخاب کنید " />
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تهران</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اراک</a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اهواز
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بندر عباس
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> بوشهر
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> اصفهان
+                                                </a></li>
+                                            <li><a href="#"><i class="fa fa-map-signs" aria-hidden="true"></i> تبریز
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <i class="fa fa-calendar-minus-o"></i>
+                                        <input type="text" autocomplete="off" data-role='date-gregorian'
+                                            autocomplete="off" class="form-control" placeholder="تاریخ رفت" />
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-default btn-block">افزودن پرواز دیگر <i
+                                                class="fa fa-plus"
+                                                style="margin-right: 5px;font-size: 10px;"></i></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <i class="fa fa-user-circle-o"></i>
+                                        <input type="text" autocomplete="off" class="form-control"
+                                            placeholder="مسافران (۱ بزرگسال)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-success btn-block ladda-button" data-style="zoom-in">
+                                            <span class="ladda-label">
+                                                جستجو <i class="fa fa-search"
+                                                    style="margin-right: 5px;font-size: 10px;"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="header-bot">
+        <div class="container">
+            <div class="header-bot__item">
+                <i class="fa fa-plane header-bot__item__icon"></i>
+                <div>
+                    <div class="header-bot__item__title">خرید بلیط هواپیما در هیوا پرواز </div>
+                    <div class="header-bot__item__desc">
+                        با هیوا پرواز می توانید در هر کجا و هر زمان، بهترین قیمت بلیط پروازهای داخلی، خارجی، را بیابید،
+                        رزرو
+                        کنید و بخرید
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="services__item">
+                        <img class="img-responsive" src="./img/service1.png" />
+                        <div class="services__item__title">پوشش ۱۰۰ درصدی پروازها و قطارها و اتوبوس‌ها</div>
+                        <div class="services__item__desc">
+                            کامل‌ترین سایت خرید بلیط <br />
+                            پروازهای داخلی، پروازهای خارجی، بلیط قطار و بلیط اتوبوس
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="services__item">
+                        <img class="img-responsive" src="./img/service2.png" />
+                        <div class="services__item__title">دسترسی آسان از طریق وبسایت، موبایل و اپلیکیشن</div>
+                        <div class="services__item__desc">
+                            ساده‌ترین و سریع‌ترین راه <br />
+                            برای جستجو، خرید و استرداد بلیط
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="services__item">
+                        <img class="img-responsive" src="./img/service3.png" />
+                        <div class="services__item__title">قیمت رقابتی همراه با تضمین بلیط‌های چارتر</div>
+                        <div class="services__item__desc">
+                            معتبرترین و به‌صرفه‌ترین سامانه <br />
+                            فروش بلیط و چارتر با پشتیبانی ۲۴ ساعته
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="container">
+            <div class="row">
+                <div class="box__title">شرکت هیوا پرواز </div>
+                <div class="box__desc">
+                    هیوا پرواز بزرگترین و معتبرترین وبسایت خرید اینترنتی بلیط هواپیما، قطار و اتوبوس در کشور است که در
+                    سال
+                    ۱۳۹۳ و با شعار تجربه شایسته سفر کار خود را آغاز کرد. فروش بلیط هواپیما برای پروازهای داخلی اولین
+                    خدمتی بود که هیوا پرواز به مشتریان عرضه کرد و پس از مدت کوتاهی، بلیط هواپیمای خارجی، بلیط قطار و
+                    بلیط
+                    اتوبوس هم به سبد محصولات آن اضافه شد.
+                    <br />
+                    خرید اینترنتی بلیط هواپیما، قطار و اتوبوس به کاربران کمک می‌کند تا در وقت و هزینه‌های خود صرفه‌جویی
+                    کنند. سایت هیوا پرواز این افتخار را دارد که در راستای رفاه حال همراهان خود، ۱۰۰ درصد پروازهای تمامی
+                    خطوط هواپیمایی داخلی، شامل پروازهای سیستمی و پروازهای چارتر را به مشتری ارائه می‌دهد. همچنین با عقد
+                    قرارداد همکاری با ۱۵ ایرلاین خارجی توانسته فهرست کاملی از پروازهای بین‌المللی را به مشتریان خود
+                    ارائه کند.
+                    برای بلیط هواپیمای خارجی، تقویم قیمتی روی سایت قرار گرفته تا مشتریان بتوانند با جست‌و‌جو در آن، با
+                    توجه به زمان سفر خود بهترین و مناسب‌ترین قیمت بلیط هواپیما را پیدا کنند.
+                    <br />
+                    در زمینه خرید بلیط چارتر، هیوا پرواز مطمئن‌ترین گزینه است؛ چرا که برای پروازهای داخلی با بهترین
+                    چارترکننده‌ها قرارداد دارد و استرداد آنلاین پروازهای کنسل شده را تضمین می‌کند. با اضافه شدن پروازهای
+                    خارجی هیوا پرواز، همین امتیازات هنگام خرید بلیط هواپیما برای سفرهای خارجی نیز در اختیار کلیه‌
+                    مسافران
+                    خواهد بود.
+                    هیوا پرواز سامانه پیشرو در زمینه خرید بلیط قطار است. بلیط همه مسیرها از همه شرکت‌های ریلی در سایت
+                    هیوا پرواز موجود است تا کاربران بتوانند قیمت و امکانات قطارها را با یکدیگر مقایسه کرده و بهترین
+                    گزینه
+                    را انتخاب کنند.
+                    <br />
+                    در هیوا پرواز امکان خرید آنلاین بلیط اتوبوس در تمام مسیرهای داخل کشور فراهم شده است. هنگام خرید از
+                    هیوا پرواز می‌توانید قیمت‌ها و امکانات ناوگان شرکت‌های مختلف اتوبوسرانی را با هم مقایسه و مناسب‌ترین
+                    گزینه را انتخاب کنید.
+                    <br />
+                    با هیوا پرواز همیشه بهترین‌ها را خواهید داشت و تجربه شایسته سفر را لمس خواهید کرد.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="customer">
+        <div class="container">
+            <div class="row">
+                <div class="customer__title">طرف قرارد شرکت هیوا پرواز </div>
+                <div class="customer__img">
+                    <img src="./img/aseman.png" />
+                    <img src="./img/mahan.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-top__item">
+                        <div class="footer-top__item__title">خدمات هیوا پرواز</div>
+                        <div class="footer-top__item__desc">
+                            با هیوا پرواز می توانید در هر کجا و هر زمان، بهترین قیمت بلیط پروازهای داخلی، خارجی، را
+                            بیابید، رزرو کنید و بخرید
+                        </div>
+                        <div class="footer-top__item__desc weight-600">
+                            شماره تماس : 09197572162
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-top__item">
+                        <div class="footer-top__item__title">لینک های اصلی</div>
+                        <a class="footer-top__item__link" href="#">پرواز داخلی / خارجی</a>
+                        <a class="footer-top__item__link" href="#">پرواز داخلی / خارجی</a>
+                        <a class="footer-top__item__link" href="#">پرواز داخلی / خارجی</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-top__item">
+                        <div class="footer-top__item__title">درباره هیوا پرواز</div>
+                        <div class="footer-top__item__desc">
+                            هیوا پرواز بزرگترین و معتبرترین وبسایت خرید اینترنتی بلیط هواپیما، قطار و اتوبوس در کشور است
+                            که در سال ۱۳۹۳ و با شعار تجربه شایسته سفر کار خود را آغاز کرد. فروش بلیط هواپیما برای
+                            پروازهای داخلی اولین خدمتی بود که هیوا پرواز به مشتریان عرضه کرد و پس از مدت کوتاهی، بلیط
+                            هواپیمای خارجی، بلیط قطار و بلیط اتوبوس هم به سبد محصولات آن اضافه شد.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-top__item">
+                        <div class="footer-top__item__title">مجوزها</div>
+                        <div>
+                            <img src="./img/enamad.png" class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>تمامی حقوق مادی و معنوی این سایت متعلق به <a href="#">شرکت هیوا پرواز می باشد </a></p>
+        <p>پیاده سازی و توسعه سایت توسط <a href="#">مهدی و مبین حسنی </a></p>
+    </footer>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fa fa-arrow-circle-o-right modal-body__close" data-dismiss="modal"
+                        data-target="#myModal"></i>
+                    <div class="col-md-8">
+                        <ul class="nav nav-pills">
+                            <li class="active"><a data-toggle="pill" href="#login">ورود</a></li>
+                            <li><a data-toggle="pill" href="#register">ثبت نام</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="login" class="tab-pane fade in active">
+                                <div class="text-center">
+                                    <img src="./img/icon-lock.svg" />
+                                    <div class="margin-top-10 margin-bottom-10 weight-600">ورود به هیوا پرواز</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" autocomplete="off" class="form-control"
+                                        placeholder="نام کاربری" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="رمز عبور" />
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success btn-block">ورود به هیوا پرواز</button>
+                                </div>
+                            </div>
+                            <div id="register" class="tab-pane fade">
+                                <div class="text-center">
+                                    <img src="./img/icon-user.svg" />
+                                    <div class="margin-top-10 margin-bottom-10 weight-600">ورود به هیوا پرواز</div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" autocomplete="off" class="form-control"
+                                        placeholder="نام و نام خانوادگی" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" autocomplete="off" class="form-control" placeholder="ایمیل" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" autocomplete="off" class="form-control"
+                                        placeholder="نام کاربری" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="رمز عبور" />
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success btn-block">ثبت نام در هیوا پرواز</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-hide">
+                        <img src="./img/UserModalPhoto.svg" class="modal-body__img" />
+                        <div class="text-center">
+                            از هم اکنون در خدمت شماییم : <br />
+                            تضمین بهترین قیمت <br />
+                            پشتیبانی 24 ساعته <br />
+                            ضمانت ویژه بلیط
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
