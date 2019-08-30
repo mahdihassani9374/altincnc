@@ -12,6 +12,6 @@ $(function () {
   }
 
   setTimeout(function () {
-    toastr.success('سلام خوش آمدید ')
+   // toastr.success('سلام خوش آمدید ')
   }, 2000);
 })
