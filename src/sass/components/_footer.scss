@@ -10,6 +10,10 @@
         font-size: 13px;
         position: relative;
 
+        @media(max-width:767px) {
+            margin-top: 15px;
+        }
+
         &::before {
             content: '';
             position: absolute;

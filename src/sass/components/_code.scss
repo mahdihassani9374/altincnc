@@ -32,3 +32,21 @@ a {
     }
 }
 
+.how {
+    background-color: #eee;
+    padding: 30px 0;
+    text-align: center;
+
+    .how__title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .how__desc {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25px;
+        margin-top: 20px;
+        text-align: justify;
+    }
+}

@@ -48,4 +48,38 @@ $(function () {
   $('[data-role="slick-right"]').on('click',function(){
     $('.slick__item').slick('slickNext');
   })
+
+  $('.resume__item').slick({
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows:false,
+    responsive: [
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+
+  $('[data-role="resume-left"]').on('click',function(){
+    $('.resume__item').slick('slickPrev');
+  })
+  $('[data-role="resume-right"]').on('click',function(){
+    $('.resume__item').slick('slickNext');
+  })
 })
