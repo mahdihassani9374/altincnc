@@ -1,0 +1,97 @@
+.footer {
+    background-color: #001833;
+    padding: 20px 0;
+    font-family: IRANSans;
+
+    .footer__title {
+        padding-bottom: 10px;
+        border-bottom: 1px dotted #ccc;
+        color: #fff;
+        font-size: 13px;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background-color: #fe6d2a;
+            top: 27px;
+            right: 0;
+        }
+    }
+
+    .footer__link {
+        display: block;
+        font-size: 11px;
+        color: #fff;
+        text-decoration: none;
+        margin: 10px 0 0;
+        position: relative;
+        padding-right: 20px;
+        transition: all ease 0.3s;
+
+        &::before {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #fe6d2a !important;
+            content: '';
+            top: 4px;
+            right: 0;
+            transform: rotate(45deg);
+        }
+
+        &:hover {
+            color: #fe6d2a !important;
+            margin-right: 5px;
+        }
+    }
+
+    .footer__desc {
+        color: #fff;
+        font-size: 11px;
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        line-height:20px;
+
+        .footer__desc__icon {
+            font-size: 30px;
+            margin-left: 15px;
+        }
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .footer__share {
+        width:40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        text-decoration: none;
+
+        &:hover {
+            background-color: #fe6d2a;
+        }
+    }
+}
+
+.footer-bot {
+    background-color: #001123;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    border-top: 1px solid #525050;
+
+    a {
+        color: #fe6d2a !important;
+    }
+}
