@@ -17,3 +17,18 @@ a {
     text-decoration: none;
 }
 
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width:767px) {
+    .col-xs-hide {
+        display: none;
+    }
+
+    .d-flex {
+        justify-content: center;
+    }
+}
+
