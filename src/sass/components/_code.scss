@@ -50,3 +50,60 @@ a {
         text-align: justify;
     }
 }
+
+.btn-warning {
+    background-color: #fe6d2a;
+    outline: none;
+    box-shadow: none;
+
+    i {
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+
+.contact {
+    padding: 40px 0;
+
+    .contact__desc {
+        font-weight: 600;
+        margin: 15px 0;
+        font-size: 18px;
+    }
+
+    .contact__icon {
+        font-weight: 500;
+        margin: 15px 0;
+        font-size: 18px;
+        color: #fe6d2a;
+        margin-left: 10px;
+    }
+
+    .d-flex {
+        justify-content: flex-start;
+    }
+}
+
+.title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.desc {
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    position: relative;
+    margin-bottom: 20px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 40px;
+        width: 140px;
+        height: 2px;
+        background-color: #fe6d2a;
+        left:calc(50% - 60px);
+    }
+}
