@@ -149,3 +149,31 @@ a {
 .text-left {
     text-align: right !important;
 }
+
+.box {
+    background-color: #fff;
+    box-shadow: 0px 0px 1px #ccc;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-top: 2px solid #fe6d2a;
+
+    .box__icon {
+        margin: 10px;
+        text-align: center;
+        width: 60px;
+        height: 60px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            font-size: 30px;
+            color: #fe6d2a
+        
+        }
+
+    }
+
+}
