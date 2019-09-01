@@ -109,6 +109,10 @@ a {
         height: 2px;
         background-color: #fe6d2a;
         left:calc(50% - 60px);
+
+        @media(max-width:767px) {
+            height: 0px;
+        }
     }
 }
 
