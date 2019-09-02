@@ -91,4 +91,6 @@ $(function () {
       l.stop();
     }, 1000);
  });
+
+ initSample();
 })
