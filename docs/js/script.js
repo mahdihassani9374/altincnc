@@ -93,4 +93,10 @@ $(function () {
  });
 
  initSample();
+
+//  CKEDITOR.instances['editor'].getData();
+
+// var msg='<p style="text-align:center;">مهدی حسنی </p>'
+
+// CKEDITOR.instances['editor'].setData(msg);
 })
