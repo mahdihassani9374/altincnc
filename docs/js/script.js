@@ -82,4 +82,13 @@ $(function () {
   $('[data-role="resume-right"]').on('click',function(){
     $('.resume__item').slick('slickNext');
   })
+
+  $('.ladda-button').click(function(e){
+    e.preventDefault();
+    var l = Ladda.create(this);
+    l.start();
+    setTimeout(function(){
+      l.stop();
+    }, 1000);
+ });
 })

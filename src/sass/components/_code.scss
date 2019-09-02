@@ -205,3 +205,72 @@ a {
         justify-content: center;
     }
 }
+
+.admin {
+    overflow: hidden;
+    padding: 20px 0;
+    .admin__item {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-top: 3px solid #ef560f;
+        margin: 10px 0;
+
+        .admin__item__header {
+            padding: 10px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+
+            .admin__item__header__icon {
+                font-size: 30px;
+                margin-left: 10px;
+            }
+
+            .admin__item__header__title {
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+
+        .admin__item__link {
+            display: block;
+            color: #444;
+            font-weight: 500;
+            font-size: 16px;
+            border-bottom: 1px dotted #ccc;
+            margin:0px;
+            padding: 5px 10px;
+            text-decoration: none;
+
+            &:last-child {
+                border-color: #fff;
+            }
+
+            &:hover {
+                color: #ef560f;
+                background-color: #f9f9f9;
+            }
+        }
+        
+    }
+}
+
+.badge {
+    background-color: #f6652b;
+}
+
+.table {
+    margin-bottom: 0px;
+}
+
+.table thead tr th , .table tbody tr td {
+    text-align: center;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #fbfbfb;
+}
+
+.ladda-button {
+    direction: ltr;
+}
