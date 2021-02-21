@@ -3,14 +3,14 @@
 
     .header__top {
         padding: 3px 0;
-        background-color: #eee;
+        background-color:#def5de;
 
         .header__top__share {
-            width:20px;
+            width: 20px;
             height: 20px;
             display: inline-flex;
             color: #666;
-            border:1px solid #666 !important;
+            border: 1px solid #666 !important;
             border-radius: 50%;
             align-items: center;
             justify-content: center;
@@ -18,15 +18,31 @@
             text-decoration: none;
 
             &:hover {
-                background-color: #fe6d2a;
+                background-color: #008408;
                 color: #fff;
                 border-color: #fff;
             }
         }
     }
 
+    .sub-header {
+        background-image: url(/img/header.png);
+        height: 110px;
+        background-size: cover;
+
+        @media (max-width:767px) {
+            & {
+                height: 70px;
+            }
+        }
+    }
+
     .header__logo {
-        padding:3px 0;
+        padding: 3px 0;
+        background-image: url(/img/p1-header.png), url(/img/p2-header.png) !important;
+        background-repeat: no-repeat;
+        background-position: 0 100%, 100% 100%;
+        background-size: contain;
     }
 
     .header__logo__title {
@@ -45,9 +61,9 @@
 
     .header__logo__phone {
         text-align: left;
-        color:#fe6d2a !important;
-        font-size:20px;
-        font-weight:bold
+        color: #008408 !important;
+        font-size: 20px;
+        font-weight: bold
     }
 
     @media (max-width:767px) {
@@ -58,8 +74,8 @@
 }
 
 .bread {
-        background-color: #eee;
-        font-weight: 600;
+    background-color: #eee;
+    font-weight: 600;
 
     .bread__item {
         display: inline-flex;
@@ -71,7 +87,11 @@
         background-color: #eee;
 
         a {
-            color: #fe6d2a;
+            color: #008408;
         }
     }
+}
+
+.navbar-inverse {
+    border-color: #ccc;
 }
