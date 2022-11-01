@@ -11,7 +11,7 @@
   "author": "Mahdi Hassani <mahdihassani9374@gmail.com> (https://github.com/mahdiafzal)",
   "devDependencies": {
     "browser-sync": "^2.26.3",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^2.6.4"
   },
